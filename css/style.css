@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+  font-family: "LexendZetta";
+  src: url("./fonts/LexendZetta.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  color: #040404;
+  background: #fff;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 200;
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+body {
+  font-family: "Roboto";
+   margin: 0; 
+   min-width: 340px; 
+  }
+a { color: inherit; text-decoration: none; }
+a:hover { opacity: .58; }
+
+.site-shell { 
+  min-height: 100vh; 
+  display: flex; 
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 192px;
+  padding: 33px 32px; 
+}
+.brand { display: block; font-size: 30px; line-height: 1.2; letter-spacing: -.03em; }
+.work-nav { margin-top: 67px; }
+.section-title { display: block; font-size: 18px; }
+.work-links { display: grid; gap: 30px; margin-top: 28px; padding-left: 6px; font-size: 13px; border-left:#040404;border:1px; }
+.year-links { display: grid; gap: 15px; margin-top: -14px; padding-left: 6px; font-size: 10px; }
+.page-content { width: 100%; margin-left: 192px; }
+.topbar { display: flex; align-items: center; gap: 48px; min-height: 104px; padding: 0 16px; }
+.about-link { font-size: 16px; min-width: 50px; }
+.top-links { display: flex; gap: 30px; font-size: 13px; }
+.content { display: grid; gap: 0; padding: 0 16px 80px; }
+.content section { min-height: 180px; padding: 48px 0; border-bottom: 1px solid #e5e5e5; scroll-margin-top: 24px; }
+.content h2 { margin: 0; font-size: 18px; font-weight: 200; }
+.menu-toggle, .mobile-menu { display: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }

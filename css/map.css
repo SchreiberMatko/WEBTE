@@ -1,0 +1,21 @@
+main {
+  width: 100%;
+  padding-right: 10%;
+}
+
+main section {
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+main #weather {
+  font-size: 20px;
+  padding: 20px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}

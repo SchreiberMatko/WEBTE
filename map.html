@@ -8,20 +8,15 @@
 
 
     <!-- Leaflet CSS -->
+    
+    <link rel="stylesheet" href="./css/map.css">
+    <link rel="stylesheet" href="./css/nav.css">
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
-    <link rel="stylesheet" href="./css/style.css">
   </head>
-  <body>
-      
-    <header>
-        <h1>Weather API a Leaflet mapa</h1>
-    </header>
-
-    <main>
-
+  <body id="body"> 
         <section>
             <h2>1. Aktuálne počasie</h2>
 
@@ -35,15 +30,14 @@
 
             <div id="map"></div>
         </section>
-
-    </main>
   </body>
   
+  <script src="./javascript/navigation.js" defer></script>
   <!-- Leaflet JavaScript -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <!-- Vlastný JavaScript -->
-  <script src="script.js">
+  <script src="./javascript/script.js">
 
   </script>
 </html>

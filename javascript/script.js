@@ -6,19 +6,21 @@ const weatherUrl =
     "https://api.open-meteo.com/v1/forecast" +
     "?latitude=48.15" +
     "&longitude=17.11" +
-    "&current=temperature_2m,wind_speed_10m" +
+    "&current=temperature_2m,wind_speed_10m,relative_humidity_2m" +
     "&timezone=auto";
 
 fetch(weatherUrl)
     .then(response => response.json())
     .then(data => {
-
+        console.log(data);
         const temperature = data.current.temperature_2m;
         const wind = data.current.wind_speed_10m;
+        const humidity = data.current.relative_humidity_2m;
 
         document.getElementById("weather").innerHTML =
             "Teplota: " + temperature + " °C<br>" +
-            "Vietor: " + wind + " km/h";
+            "Vietor: " + wind + " km/h<br>" + 
+            "Vlhkosť: " + humidity;
 
     })
     .catch(error => {
@@ -58,3 +60,6 @@ L.marker([48.151965, 17.072995])
     .addTo(map)
     .bindPopup("FEI STU Bratislava")
     .openPopup();
+
+// Mapa sa po načítaní navigácie presunie do <main>, takže treba prepočítať jej veľkosť
+document.addEventListener("nav-loaded", () => map.invalidateSize());

@@ -44,15 +44,17 @@ a:hover { opacity: .58; }
   padding: 33px 32px; 
 }
 .brand { display: block; font-size: 30px; line-height: 1.2; letter-spacing: -.03em; }
-.work-nav { margin-top: 67px; }
-.section-title { display: block; font-size: 18px; }
-.work-links { display: grid; gap: 30px; margin-top: 28px; padding-left: 6px; font-size: 13px; border-left:#888888 0.1px solid; }
+.work-nav { margin-top: 20px; display:flex; flex-direction: column;
+  transition: height 0.15s ease-out;}
+.section-title { display: flex; font-size: 1.125rem; height: 25%; align-items: center;}
+.work-links {align-items: end; height: 50%;display: grid; gap: 10%; margin-top: 28px; padding-left: 6px; font-size: 11px; border-left:#888888 0.1px solid; }
 .page-content { width: 100%; margin-left: 192px; }
 .topbar {background: linear-gradient(to bottom, #ffffff 60%, transparent 100%);
-        width: 100%;position: fixed; display: flex;min-height: 104px; padding: 0 16px; }
-#stretchable-links {width: 100%; display: flex; justify-content: end; align-items: center; gap: 20%; }
-.about-link { font-size: 16px; min-width: 50px; padding-top: 6px;}
-.top-links {display: flex; gap: 20%; font-size: 13px; justify-self: end; justify-content: end; width: 50%; padding-top: 6px; border-top: 0.1px solid #888888;}
+        width: 100%;position: fixed; display: flex;min-height: 104px; padding: 35px 16px; padding-left: 0;
+      }
+#stretchable-links { transition: width 0.15s ease-out; width: 20%; display: flex; justify-content: end; align-items: top; gap: 10%; }
+.about-link { font-size: 1.125rem; min-width: 3.5rem; text-align: top;}
+.top-links {min-width: 97px; margin-top: 3px; display: flex; gap: 20%; font-size: 11px; justify-self: end; justify-content: end; width: 50%; padding-top: 3px; border-top: 0.1px solid #888888;}
 .content { display: grid; gap: 0; padding: 0 16px 80px; }
 .content section { min-height: 180px; padding: 48px 0; border-bottom: 1px solid #e5e5e5; scroll-margin-top: 24px; }
 .content h2 { margin: 0; font-size: 18px; font-weight: 200; }

@@ -1,0 +1,18 @@
+#scribble {
+  min-width: 150px;
+  height: 1200px;
+  width: 1800px;
+  transform: translate(-200px, -300px);
+  position: fixed;
+  z-index: -1;
+}
+
+.topbar {
+  background: transparent !important;
+}
+
+path {
+  opacity: 70%;
+  transition: 0.15s ease-out;
+}
+

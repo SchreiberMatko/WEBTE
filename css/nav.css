@@ -14,26 +14,27 @@
 
 * { box-sizing: border-box; }
 
-:root {
-  color: #040404;
-  background: #fff;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 200;
+h1, h2, h3, h4, h5{
+  font-family: "LexendZetta";
+  text-transform: uppercase;
 }
 
-html { 
-  scroll-behavior: smooth; 
+p {
+  font-family: "Roboto";
 }
+
 body {
   font-family: "Roboto";
-   margin: 0; 
-   min-width: 500px; 
-  }
+  margin: 0;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
 a { color: inherit; text-decoration: none; }
 a:hover { opacity: .58; }
 
 .site-shell { 
-  min-height: 100vh; 
   display: flex; 
 }
 
@@ -44,15 +45,15 @@ a:hover { opacity: .58; }
   padding: 33px 32px; 
 }
 .brand { display: block; font-size: 30px; line-height: 1.2; letter-spacing: -.03em; }
-.work-nav { margin-top: 20px; display:flex; flex-direction: column;
-  transition: height 0.15s ease-out;}
+.work-nav { margin-top: 20px; display:flex; flex-direction:    column;
+  /*transition: height 0.15s ease-out;*/}
 .section-title { display: flex; font-size: 1.125rem; height: 25%; align-items: center;}
 .work-links {align-items: end; height: 50%;display: grid; gap: 10%; margin-top: 28px; padding-left: 6px; font-size: 11px; border-left:#888888 0.1px solid; }
-.page-content { width: 100%; margin-left: 192px; }
-.topbar {background: linear-gradient(to bottom, #ffffff 60%, transparent 100%);
+.page-content {height: 100vw; width: 100vw; margin-left: 192px; overflow: hidden;}
+.topbar {background: linear-gradient(to bottom, #FFFFFF 60%, transparent 100%);
         width: 100%;position: fixed; display: flex;min-height: 104px; padding: 35px 16px; padding-left: 0;
       }
-#stretchable-links { transition: width 0.15s ease-out; width: 20%; display: flex; justify-content: end; align-items: top; gap: 10%; }
+#stretchable-links { /*transition: width 0.15s ease-out;*/ width: 50%; display: flex; justify-content: end; align-items: top; gap: 10%; }
 .about-link { font-size: 1.125rem; min-width: 3.5rem; text-align: top;}
 .top-links {min-width: 97px; margin-top: 3px; display: flex; gap: 20%; font-size: 11px; justify-self: end; justify-content: end; width: 50%; padding-top: 3px; border-top: 0.1px solid #888888;}
 .content { display: grid; gap: 0; padding: 0 16px 80px; }
@@ -60,4 +61,44 @@ a:hover { opacity: .58; }
 .content h2 { margin: 0; font-size: 18px; font-weight: 200; }
 .menu-toggle, .mobile-menu { display: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-main { margin-top: 104px; }
+main { margin-top: 104px; height: 80%; overflow: hidden;}
+
+@media (max-width: 768px){
+  .brand{
+    font-size: 22px;
+  }
+  .sidebar{
+    padding: 15px;
+    padding-right: 5px;
+    width:140px;
+  }
+  .page-content{
+    margin-left: 140px;
+  }
+  .topbar{
+    padding: 15px 0;
+  }
+  #stretchable-links {
+    gap: 10%;
+    width: 50% !important;
+  }
+}
+
+/*#bgcontainer{
+  width: 100vw;
+  height: 100vh;
+  position:fixed;
+  z-index: -1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background-color: #E9E9E9;
+}
+
+#bgimage{
+  filter: grayscale(100%);
+  opacity: 70%;
+  width: 30%;
+  height: 115%;
+  object-fit: contain;
+}*/

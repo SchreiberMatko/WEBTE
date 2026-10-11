@@ -21,7 +21,37 @@ fetch("nav.html")
     let offsetHorizontal = 1;
     let offsetVertical = 1;
     let waiting = false;
-    
+
+    // ease the nav size toward the target every frame instead of a CSS transition
+    let curW = horizontal.offsetWidth;
+    let curH = vertical.offsetHeight;
+    let targetW = curW, targetH = curH;
+    let animating = false;
+    const ease = 0.2; // 0..1, lower = smoother/slower
+
+    function animateNav() {
+      curW += (targetW - curW) * ease;
+      curH += (targetH - curH) * ease;
+      if (Math.abs(targetW - curW) < 0.5 && Math.abs(targetH - curH) < 0.5) {
+        curW = targetW;
+        curH = targetH;
+        animating = false;
+      } else {
+        requestAnimationFrame(animateNav);
+      }
+      horizontal.style.width = `${curW}px`;
+      vertical.style.height = `${curH}px`;
+    }
+
+    function setNavSize(w, h) {
+      targetW = w;
+      targetH = h;
+      if (!animating) {
+        animating = true;
+        requestAnimationFrame(animateNav);
+      }
+    }
+
     document.addEventListener("mousemove", (event) => {
       offsetHorizontal = 0;
       offsetVertical = 0;
@@ -38,8 +68,9 @@ fetch("nav.html")
       newHeight = Math.max(0, newHeight);
       
       // 4. Apply the calculated width
-      horizontal.style.width = `${newWidth}px`;
-      vertical.style.height = `${newHeight}px`;
+      // horizontal.style.width = `${newWidth}px`;
+      // vertical.style.height = `${newHeight}px`;
+      setNavSize(newWidth, newHeight);
       
     });
     document.addEventListener("wheel", (event) => {
@@ -85,11 +116,11 @@ fetch("nav.html")
               offsetVertical = 0;
             }
             else {
-              offsetVertical = oldh*0.6 - (oldh - diff)*0.9;
+              offsetVertical = oldh*0.7 - (oldh - diff)*1.2;
             }
             waiting = true;
               setTimeout(function() {
-                waiting = false;
+                waiting = false
               }, 100);
           }
         } else if (event.deltaY > 0) {
@@ -119,8 +150,9 @@ fetch("nav.html")
       newHeight = Math.max(0, newHeight);
       
       // 4. Apply the calculated width
-      horizontal.style.width = `${newWidth}px`;
-      vertical.style.height = `${newHeight}px`;
+      // horizontal.style.width = `${newWidth}px`;
+      // vertical.style.height = `${newHeight}px`;
+      setNavSize(newWidth, newHeight);
       
     });
     })
@@ -129,5 +161,5 @@ fetch("nav.html")
   function redoNav(){
     
   }
-  
+  //media height 381
 

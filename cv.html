@@ -1,24 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Matej Schreiber</title>
-    <link rel="stylesheet" href="css/cv.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Životopis | Matej Schreiber</title>
+    <meta name="description" content="Životopis Mateja Schreibera – štúdium aplikovanej informatiky na FEI STU, počítačové a jazykové zručnosti a kontakt.">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:title" content="Životopis | Matej Schreiber">
+    <meta property="og:description" content="Čo viem: vzdelanie, počítačové a jazykové zručnosti a kontakt.">
+    <meta property="og:image" content="images/avatar.png">
+
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cv.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+
+    <script src="javascript/navigation.js" defer></script>
   </head>
 
   <body id="body">
-    <div class="collumns">
-      <section>
-        <p>sjfisgjw</p>
-      </section>
-      <section>
-        <p>sjfisgjw</p>
-      </section>
+    <div class="page">
+      <article class="container">
+        <header class="page-header">
+          <p class="eyebrow">Čo viem</p>
+          <h1>Životopis</h1>
+          <p class="lead">
+            Študujem aplikovanú informatiku na FEI STU v Bratislave, pochádzam z Banskej Bystrice.
+            Baví ma tvoriť nové veci, či už ide o technológie, alebo umenie. Som proaktívny a rád pracujem v tíme.
+          </p>
+        </header>
+
+        <div class="cv">
+          <section class="cv__aside" aria-labelledby="contact-title">
+            <img class="cv__photo" src="images/profile.png" width="298" height="611"
+                 alt="Čiernobiela kresba postavy so zdvihnutými rukami.">
+
+            <h2 id="contact-title">Kontakt</h2>
+            <address class="contact">
+              <p class="contact__name">Matej Schreiber</p>
+              <dl class="contact__list">
+                <dt>E-mail</dt>
+                <dd><a href="mailto:xschreiber@stuba.sk">xschreiber@stuba.sk</a></dd>
+                <dt>Telefón</dt>
+                <dd><a href="tel:+421918773757">+421 918 773 757</a></dd>
+                <dt>Adresa</dt>
+                <dd>Banská Bystrica / Bratislava<br>Slovensko</dd>
+              </dl>
+            </address>
+
+            <section class="cv__section" aria-labelledby="skills-title">
+              <h2 id="skills-title">Počítačové zručnosti</h2>
+              <p class="muted cv__note">Úroveň na stupnici 1 – 5. Moje tri kľúčové veci sú označené.</p>
+              <ul class="skills">
+                <li class="skill">
+                  <span class="skill__name">Programovanie (C#, Python, JavaScript, SQL, C) <span class="tag">kľúčové</span></span>
+                  <span class="level" data-level="3" role="img" aria-label="Úroveň 3 z 5"></span>
+                  <span class="skill__label">stredne pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Inkscape / Illustrator <span class="tag">kľúčové</span></span>
+                  <span class="level" data-level="4" role="img" aria-label="Úroveň 4 z 5"></span>
+                  <span class="skill__label">pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Unreal Engine / Unity <span class="tag">kľúčové</span></span>
+                  <span class="level" data-level="3" role="img" aria-label="Úroveň 3 z 5"></span>
+                  <span class="skill__label">stredne pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Microsoft Visual Studio</span>
+                  <span class="level" data-level="4" role="img" aria-label="Úroveň 4 z 5"></span>
+                  <span class="skill__label">pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Blender</span>
+                  <span class="level" data-level="3" role="img" aria-label="Úroveň 3 z 5"></span>
+                  <span class="skill__label">stredne pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Linux</span>
+                  <span class="level" data-level="3" role="img" aria-label="Úroveň 3 z 5"></span>
+                  <span class="skill__label">stredne pokročilý</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">PHP</span>
+                  <span class="level" data-level="1" role="img" aria-label="Úroveň 1 z 5"></span>
+                  <span class="skill__label">základy</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="cv__section" aria-labelledby="languages-title">
+              <h2 id="languages-title">Jazykové zručnosti</h2>
+              <ul class="skills">
+                <li class="skill">
+                  <span class="skill__name">Slovenčina</span>
+                  <span class="level" data-level="5" role="img" aria-label="Úroveň 5 z 5"></span>
+                  <span class="skill__label">materinský jazyk</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Angličtina</span>
+                  <span class="level" data-level="4" role="img" aria-label="Úroveň 4 z 5"></span>
+                  <span class="skill__label">B2</span>
+                </li>
+                <li class="skill">
+                  <span class="skill__name">Nemčina</span>
+                  <span class="level" data-level="2" role="img" aria-label="Úroveň 2 z 5"></span>
+                  <span class="skill__label">A2</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="cv__section" aria-labelledby="interests-title">
+              <h2 id="interests-title">Záujmy</h2>
+              <p>Tvorba počítačových hier, kreslenie, hudba a fitness.</p>
+            </section>
+          </section>
+
+          <div class="cv__main">
+            <section class="cv__section" aria-labelledby="education-title">
+              <h2 id="education-title">Vzdelanie</h2>
+              <ol class="timeline">
+                <li class="timeline__item">
+                  <p class="timeline__period">2024 – súčasnosť</p>
+                  <h3>Fakulta elektrotechniky a informatiky STU v Bratislave</h3>
+                  <p>
+                    Bakalárske štúdium, program Aplikovaná informatika, 3. ročník.
+                    Tento semester mám okrem iného Webové technológie 1 (na ne vznikla táto stránka),
+                    Operačné systémy, Softvérové inžinierstvo a Analýzu a zložitosť algoritmov.
+                  </p>
+                </li>
+                <li class="timeline__item">
+                  <p class="timeline__period">2020 – 2024</p>
+                  <h3>Stredná priemyselná škola Jozefa Murgaša, Banská Bystrica</h3>
+                  <p>Odbor inteligentné technológie, ukončený maturitnou skúškou.</p>
+                </li>
+              </ol>
+            </section>
+
+            <section class="cv__section" aria-labelledby="work-title">
+              <h2 id="work-title">Pracovné skúsenosti</h2>
+              <ol class="timeline">
+                <li class="timeline__item">
+                  <p class="timeline__period">súčasnosť, popri štúdiu</p>
+                  <h3>Vývojár – Objekta s.r.o.</h3>
+                  <p>Webový 3D plánovač miestnosti na rozmiestnenie nábytku (Next.js, React, TypeScript, three.js).</p>
+                </li>
+                <li class="timeline__item">
+                  <p class="timeline__period">09/2024 – 07/2025</p>
+                  <h3>Webový vývojár – Martin Knut</h3>
+                  <p>Web na WordPresse pre slovenského maliara Martina Knuta.</p>
+                </li>
+                <li class="timeline__item">
+                  <p class="timeline__period">2021 – 2024</p>
+                  <h3>Brigády a odborná prax</h3>
+                  <p>
+                    Predavač v Tesco v Bratislave (2024), Node-RED vývojár v HEPI, s.r.o. (prax 2023),
+                    frontend webu pre SCR Design s.r.o. (prax 2022) a asistent na podujatiach
+                    MFK Dukla Banská Bystrica (2021 – 2022).
+                  </p>
+                </li>
+              </ol>
+            </section>
+
+            <section class="cv__section" aria-labelledby="projects-title">
+              <h2 id="projects-title">Vlastné projekty</h2>
+              <ul class="timeline">
+                <li class="timeline__item">
+                  <h3>Šachová minihra pre Minecraft</h3>
+                  <p>Plugin pre server Paper (Java, Maven): vlastná šachová dimenzia s ťahovým systémom a efektmi blokov.</p>
+                </li>
+                <li class="timeline__item">
+                  <h3>Alldle</h3>
+                  <p>Mobilná aplikácia vo Flutteri na sledovanie výsledkov hry Wordle.</p>
+                </li>
+              </ul>
+            </section>
+
+            <section class="cv__section" aria-labelledby="certificates-title">
+              <h2 id="certificates-title">Certifikáty a kurzy</h2>
+              <ol class="timeline">
+                <li class="timeline__item">
+                  <p class="timeline__period">09/2021 – 06/2022</p>
+                  <h3>Cisco IT Essentials</h3>
+                  <p>Kurz spoločnosti Cisco.</p>
+                </li>
+                <li class="timeline__item">
+                  <p class="timeline__period">2022</p>
+                  <h3>IQ test – Mensa Slovensko</h3>
+                  <p>Výsledok: IQ 156.</p>
+                </li>
+              </ol>
+            </section>
+
+            <svg class="cv__signature" viewBox="535 50 300 300" role="img" aria-labelledby="signature-title">
+              <title id="signature-title">Podpis Mateja Schreibera</title>
+              <path d="M30 0 C 0 700, 150 25, 236 19 S 100 100, 650 80 S 346 136, 346 150" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M600 15 C 500 245, 530 300, 628 300 S 500 240, 567 145 S 500 500, 600 300" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </article>
     </div>
   </body>
-
-  <script src="./javascript/navigation.js" defer></script>
-
 </html>

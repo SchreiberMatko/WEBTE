@@ -11,8 +11,93 @@
   background: transparent !important;
 }
 
-path {
-  opacity: 70%;
-  transition: 0.15s ease-out;
+.sidebar {
+  background: transparent !important;
 }
 
+/* No CSS transition here: Safari can't animate the "d" attribute,
+   so mainscript.js eases the paths itself */
+path {
+  opacity: 70%;
+}
+
+.page{
+  display: flex;
+  width:100%;
+  height:100%;
+  overflow: visible;
+  flex-direction: column;
+  /* on a screen too short for everything, the top gets cut off instead of the about box */
+  justify-content: flex-end;
+}
+
+#about-container {
+  margin-top: auto; /* takes all the free space above it, so the intro stays at the top */
+  align-self:flex-end;
+  justify-self: flex-end;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 28%;
+  height: 52%;
+  min-height: 385px;
+  min-width: 290px;
+  padding: 20px;
+  gap: 10px;
+  background-color: rgba(210, 210, 210, 0.3);
+  /* Was 0 0 500px rgba(210, 210, 210, 0.7): Chrome cuts such a huge blur short and shows
+     a strong glow, Safari (every browser on iPhone) spreads it over the full 500px so it
+     almost disappears. This smaller blur + spread looks like the Chrome version everywhere. */
+  box-shadow: 0 0 128px 88px rgba(210, 210, 210, 0.28);
+  border-top-left-radius: 150px;
+}
+
+#about-container img{
+  margin: 10px; 
+  float: left;
+  width: 60px;
+  height: auto;
+  opacity: 80%;
+}
+
+#about-container p {
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+#about-container ul {
+  /* list-style: square inside url("https://cdn.pixabay.com/animation/2024/06/23/05/08/05-08-33-791_512.gif"); */
+  list-style: none; /* a list-style image can't be resized, so the gif is drawn by li::before */
+  font-size: 0.8rem;
+  margin: none;
+  transform: translate(0, -20px);
+}
+
+#about-container li{
+  height: 2em;
+}
+
+#about-container li::before {
+  content: "";
+  filter: grayscale(100%);
+  display: inline-block;
+  width: 1.5em;
+  height: 4em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+  background: url("/images/fire.gif") center / contain no-repeat;
+}
+
+#about-container aside{
+  font-family: "LexendZetta";
+  font-style: italic;
+  font-size: 0.8rem;
+  font-weight: 200;
+  padding: 20px;
+}
+
+@media  (max-width: 768px) {
+  #scribble{
+    width: 900px;
+    transform: translate(-130px, -430px);
+  }
+}

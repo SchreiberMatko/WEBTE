@@ -2,8 +2,23 @@ const interactive = document.getElementsByClassName("interactive");
 let mx = 0, my = 0, queued = false;
 let showDescription;
 let showDesriptionText;
+let preview;
+let counter = 1;
+
+for (const image of interactive) { 
+  preview = setTimeout(function(){
+    image.style.opacity = 1;
+    image.style.filter = "grayscale(0%)";
+    setTimeout(function(){
+      image.style.opacity = 0.8;
+      image.style.filter = "grayscale(100%)";
+    }, 200*counter);
+  }, 200*counter);
+  counter+= 0.5;
+ }
 
 function highlight(position){
+  clearTimeout(preview);
   console.log(interactive[position]);
   interactive[position].style.filter = "grayscale(0%)";
   interactive[position].style.opacity = 1;
@@ -31,7 +46,7 @@ function highlight(position){
           default: break;
         }  
       });
-    }, 500)
+    }, 100)
   }, 350);
   
 }

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matej Schreiber</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/nav.css">
+
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
   </head>
 
   <body id="body">
@@ -14,15 +17,31 @@
       <path id="path2" d="M30 0 C 0 700, 150 25, 236 19 S 100 100, 570 80 S 346 136, 346 130" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round"/>
       <path id="path3" d="M600 15 C 500 245, 530 300, 628 300 S 500 240, 567 145 S 500 500, 600 300" fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round"/>
     </svg>
-    <p id="O mne">
-      Som veľmi "out-of-box" mysliaci človek:
-    </p>
-    <p style="margin-top: 50vh">
-      Budem rád sa aspon jeden bod za kreativitu... bohužiaľ podcenil som konkrétnosť zadania.
-    </p>
+    <div class="page">
+      
+      <p id="indtroducement">
+        Som veľmi "out-of-box" mysliaci človek:
+      </p>
+      <div id="about-container">
+        <img src="./images/profile.png" alt="Profilová fotka"/>
+        
+        <ul>
+          <li>Rád kreslím</li>
+          <li>Super výmyselník</li>
+          <li>Milujem programovanie</li>
+        </ul>
+        <p>
+          Pochádzam z Banskej Bystrice a na FEI STU v Bratislave študujem aplikovanú informatiku. Moje koníčky sú tvorba počítačových hier, kreslenie, hudba a fitness – vo Workspace si môžete po častiach prezrieť jednu moju kresbu.
+          Budem rád aspoň za jeden bod za kreativitu… bohužiaľ, podcenil som konkrétnosť zadania.
+        </p>
+        <aside>
+          "Keď Lambda2 je alfa na piatu, tak potom ten v2 je 1 alfa na piatu a 1 na desiatu, a keď máte ....."
+        </aside>
+      </div>
+    </div>
+
+    <script src="./javascript/navigation.js" defer></script>
+
+    <script src="./javascript/mainscript.js"></script>
   </body>
-
-  <script src="./javascript/navigation.js" defer></script>
-
-  <script src="./javascript/mainscript.js"></script>
 </html>

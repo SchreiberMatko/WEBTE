@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kedy ma zastihnete – rozvrh | Matej Schreiber</title>
+    <meta name="description" content="Týždenný rozvrh Mateja Schreibera v zimnom semestri 2026/2027 na FEI STU – kedy má výučbu a kedy je voľný.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:title" content="Kedy ma zastihnete | Matej Schreiber">
+    <meta property="og:description" content="Rozvrh na zimný semester 2026/2027 s aktuálne prebiehajúcou hodinou a voľnými blokmi.">
+    <meta property="og:image" content="images/avatar.png">
+
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/schedule.css">
+
+    <script src="javascript/navigation.js" defer></script>
+    <script src="javascript/script.js" defer></script>
+  </head>
+
+  <body id="body">
+    <div class="page">
+      <article class="container">
+        <header class="page-header">
+          <p class="eyebrow">Kedy mám čas</p>
+          <h1>Kedy ma zastihnete</h1>
+          <p class="lead">
+            Cez týždeň som väčšinu dňa na FEI STU v Mlynskej doline. Voľné bloky v rozvrhu
+            sú najlepší čas na stretnutie, inak ma najrýchlejšie zastihnete
+            e-mailom na <a href="mailto:xschreiber@stuba.sk">xschreiber@stuba.sk</a>.
+          </p>
+        </header>
+
+        <section class="section" aria-labelledby="now-title">
+          <h2 id="now-title">Práve teraz</h2>
+          <p id="lesson-status" class="notice" role="status">
+            Aktuálne prebiehajúcu hodinu zvýrazním, keď sa načíta JavaScript.
+          </p>
+        </section>
+
+        <section class="section" aria-labelledby="schedule-title">
+          <h2 id="schedule-title">Rozvrh – zimný semester 2026/2027</h2>
+
+          <div class="schedule-toolbar">
+            <div class="button-group" role="group" aria-label="Filter rozvrhu">
+              <button class="button" type="button" data-filter="all" aria-pressed="true">Všetko</button>
+              <button class="button" type="button" data-filter="lecture" aria-pressed="false">Prednášky</button>
+              <button class="button" type="button" data-filter="exercise" aria-pressed="false">Cvičenia</button>
+            </div>
+
+            <ul class="legend" aria-label="Legenda">
+              <li class="legend__item"><span class="legend__swatch" data-type="lecture"></span>Prednáška</li>
+              <li class="legend__item"><span class="legend__swatch" data-type="exercise"></span>Cvičenie</li>
+              <li class="legend__item"><span class="legend__swatch" data-type="sport"></span>Telesná výchova</li>
+              <li class="legend__item"><span class="legend__swatch legend__swatch--current"></span>Práve prebieha</li>
+            </ul>
+          </div>
+
+          <p id="filter-empty" class="notice" hidden>
+            Pre tento filter v rozvrhu nemám žiadnu hodinu. Skúste iný filter alebo zobrazte všetko.
+          </p>
+
+          <div class="table-scroll" tabindex="0" role="region" aria-labelledby="schedule-title">
+            <table id="schedule" class="schedule" data-active-filter="all">
+              <caption class="sr-only">
+                Týždenný rozvrh od 7:00 do 21:00, dni v riadkoch a hodiny v stĺpcoch. Voľné bloky sú spojené.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Deň</th>
+                  <th scope="col">7:00</th>
+                  <th scope="col">8:00</th>
+                  <th scope="col">9:00</th>
+                  <th scope="col">10:00</th>
+                  <th scope="col">11:00</th>
+                  <th scope="col">12:00</th>
+                  <th scope="col">13:00</th>
+                  <th scope="col">14:00</th>
+                  <th scope="col">15:00</th>
+                  <th scope="col">16:00</th>
+                  <th scope="col">17:00</th>
+                  <th scope="col">18:00</th>
+                  <th scope="col">19:00</th>
+                  <th scope="col">20:00</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-day="1">
+                  <th scope="row"><abbr title="pondelok">Po</abbr></th>
+                  <td class="free" colspan="2">voľno</td>
+                  <td class="lesson" colspan="2" data-type="exercise" data-start="09:00" data-end="10:50">
+                    <span class="lesson__code">c137</span>
+                    <span class="lesson__name">Webové technológie 1</span>
+                    <span class="lesson__meta">cvičenie · 9:00 – 10:50</span>
+                  </td>
+                  <td class="lesson" data-type="sport" data-start="11:00" data-end="12:00">
+                    <span class="lesson__code">t-upol2</span>
+                    <span class="lesson__name">Teles&shy;ná výcho&shy;va 5</span>
+                    <span class="lesson__meta">šport · 11:00 – 12:00</span>
+                  </td>
+                  <td class="free">voľno</td>
+                  <td class="lesson" colspan="2" data-type="exercise" data-start="13:00" data-end="14:50">
+                    <span class="lesson__code">cpu-c</span>
+                    <span class="lesson__name">Operačné systémy</span>
+                    <span class="lesson__meta">cvičenie · 13:00 – 14:50</span>
+                  </td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="15:00" data-end="16:50">
+                    <span class="lesson__code">cd300</span>
+                    <span class="lesson__name">Lineárna algebra 2</span>
+                    <span class="lesson__meta">prednáška · 15:00 – 16:50</span>
+                  </td>
+                  <td class="free" colspan="4">voľno</td>
+                </tr>
+                <tr data-day="2">
+                  <th scope="row"><abbr title="utorok">Ut</abbr></th>
+                  <td class="free">voľno</td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="08:00" data-end="09:50">
+                    <span class="lesson__code">de300</span>
+                    <span class="lesson__name">Analýza a zložitosť algoritmov</span>
+                    <span class="lesson__meta">prednáška · 8:00 – 9:50</span>
+                  </td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="10:00" data-end="11:50">
+                    <span class="lesson__code">cd150</span>
+                    <span class="lesson__name">Webové technológie 1</span>
+                    <span class="lesson__meta">prednáška · 10:00 – 11:50</span>
+                  </td>
+                  <td class="free" colspan="3">voľno</td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="15:00" data-end="16:50">
+                    <span class="lesson__code">cd300</span>
+                    <span class="lesson__name">Softvérové inžinierstvo</span>
+                    <span class="lesson__meta">prednáška · 15:00 – 16:50</span>
+                  </td>
+                  <td class="lesson" data-type="exercise" data-start="17:00" data-end="17:50">
+                    <span class="lesson__code">cd300</span>
+                    <span class="lesson__name">Soft&shy;vérové inži&shy;nier&shy;stvo</span>
+                    <span class="lesson__meta">cvičenie · 17:00 – 17:50</span>
+                  </td>
+                  <td class="free" colspan="3">voľno</td>
+                </tr>
+                <tr data-day="3">
+                  <th scope="row"><abbr title="streda">St</abbr></th>
+                  <td class="free">voľno</td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="08:00" data-end="09:50">
+                    <span class="lesson__code">cd300</span>
+                    <span class="lesson__name">Operačné systémy</span>
+                    <span class="lesson__meta">prednáška · 8:00 – 9:50</span>
+                  </td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="10:00" data-end="11:50">
+                    <span class="lesson__code">bc150</span>
+                    <span class="lesson__name">Analýza a zložitosť algoritmov</span>
+                    <span class="lesson__meta">prednáška · 10:00 – 11:50</span>
+                  </td>
+                  <td class="free">voľno</td>
+                  <td class="lesson" colspan="2" data-type="lecture" data-start="13:00" data-end="14:50">
+                    <span class="lesson__code">cd150</span>
+                    <span class="lesson__name">Webové technológie 1</span>
+                    <span class="lesson__meta">prednáška · 13:00 – 14:50</span>
+                  </td>
+                  <td class="free" colspan="6">voľno</td>
+                </tr>
+                <tr data-day="4">
+                  <th scope="row"><abbr title="štvrtok">Št</abbr></th>
+                  <td class="free" colspan="5">voľno</td>
+                  <td class="lesson" data-type="exercise" data-start="12:00" data-end="12:50">
+                    <span class="lesson__code">c137</span>
+                    <span class="lesson__name">Soft&shy;vérové inži&shy;nier&shy;stvo</span>
+                    <span class="lesson__meta">cvičenie · 12:00 – 12:50</span>
+                  </td>
+                  <td class="free" colspan="8">voľno</td>
+                </tr>
+                <tr data-day="5">
+                  <th scope="row"><abbr title="piatok">Pi</abbr></th>
+                  <td class="free" colspan="2">voľno</td>
+                  <td class="lesson" data-type="exercise" data-start="09:00" data-end="09:50">
+                    <span class="lesson__code">cd150</span>
+                    <span class="lesson__name">Analý&shy;za a zloži&shy;tosť algo&shy;ritmov</span>
+                    <span class="lesson__meta">cvičenie · 9:00 – 9:50</span>
+                  </td>
+                  <td class="free" colspan="3">voľno</td>
+                  <td class="lesson" colspan="2" data-type="exercise" data-start="13:00" data-end="14:50">
+                    <span class="lesson__code">bc35</span>
+                    <span class="lesson__name">Lineárna algebra 2</span>
+                    <span class="lesson__meta">cvičenie · 13:00 – 14:50</span>
+                  </td>
+                  <td class="free" colspan="6">voľno</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="semester-title">
+          <h2 id="semester-title">Priebeh semestra</h2>
+          <progress id="semester-progress" class="progress" max="100" value="0" aria-labelledby="semester-title">0 %</progress>
+          <p id="semester-label" class="progress-label">
+            Percento uplynutého semestra vypočítam, keď sa načíta JavaScript.
+          </p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

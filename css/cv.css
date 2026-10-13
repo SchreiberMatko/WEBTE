@@ -1,16 +1,212 @@
-.collumns{
-  display: flex;
-  flex-direction: row;
+/* CV page: two columns with different backgrounds over their full height */
+
+.cv {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(0, 2fr);
+  border: 1px solid var(--color-line-light);
+}
+
+.cv__aside,
+.cv__main {
+  padding: var(--space-lg);
+}
+
+.cv__aside {
+  background-color: var(--color-surface);
+}
+
+.cv__main {
+  background-color: var(--color-bg);
+}
+
+.cv__photo {
+  display: block;
   width: 100%;
-  height: 100%;
-  background-color: white;
+  max-width: 14rem;
+  height: auto;
+  margin-bottom: var(--space-lg);
+  filter: grayscale(100%);
+  transition: filter var(--transition);
 }
 
-.collumns:first-child {
-  background-color: hsl(0, 0%, 80%);
+.cv__photo:hover {
+  filter: grayscale(0%);
 }
 
-.collumns section{
-  width: 50%;
-  height: 100%;
+/* Contact */
+.contact {
+  font-style: normal;
+}
+
+.page .contact__name {
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.contact__list {
+  margin: 0;
+}
+
+.contact__list dt {
+  margin-top: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact__list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Skills, languages and interests sit under the contact in the left column */
+.contact + .cv__section {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-line-light);
+}
+
+/* The left column is narrow, so the skill name goes above its level bar */
+.cv__aside .skill {
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.cv__aside .skill__name {
+  grid-column: 1 / -1;
+}
+
+/* Right column sections */
+.cv__section + .cv__section {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-line-light);
+}
+
+.page .cv__note {
+  font-size: var(--font-size-sm);
+}
+
+/* Signature at the end of the CV, the same drawing as favicon.svg */
+.cv__signature {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  margin: var(--space-lg) 0 0 auto;
+  color: var(--color-text);
+}
+
+/* Education timeline */
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline__item {
+  padding-left: var(--space);
+  border-left: 1px solid var(--color-line);
+}
+
+.timeline__item + .timeline__item {
+  margin-top: var(--space);
+}
+
+.page .timeline__period {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page .timeline__item p:last-child {
+  margin-bottom: 0;
+}
+
+/* Skills with a level bar */
+.skills {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5rem 9rem;
+  gap: var(--space);
+  align-items: center;
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid var(--color-line-light);
+}
+
+.skill__label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.level {
+  --level: 0;
+  display: block;
+  height: 4px;
+  border-radius: var(--radius);
+  background: linear-gradient(to right, var(--color-brand) calc(var(--level) * 20%), var(--color-line-light) 0);
+}
+
+.level[data-level="1"] { --level: 1; }
+.level[data-level="2"] { --level: 2; }
+.level[data-level="3"] { --level: 3; }
+.level[data-level="4"] { --level: 4; }
+.level[data-level="5"] { --level: 5; }
+
+/* Tablets and narrow windows: next to the 192px sidebar two columns leave the skill
+   names only a few px, so the CV goes to one column with the photo beside the contact */
+@media (max-width: 1024px) {
+  .cv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cv__aside {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--space-lg);
+  }
+
+  .cv__photo {
+    grid-row: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  /* Sections under the contact take the full width below the photo */
+  .cv__aside .cv__section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Phones: photo back above the contact but smaller, skills on two rows */
+@media (max-width: 768px) {
+  .cv__aside,
+  .cv__main {
+    padding: var(--space);
+  }
+
+  .cv__aside {
+    display: block;
+  }
+
+  .cv__photo {
+    max-width: 10rem;
+    margin-bottom: var(--space);
+  }
+
+  .skill {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: var(--space-xs) var(--space-sm);
+  }
+
+  .skill__name {
+    grid-column: 1 / -1;
+  }
 }

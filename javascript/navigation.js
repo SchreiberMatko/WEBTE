@@ -13,6 +13,15 @@ fetch("nav.html")
     }
 
     document.body.append(...doc.body.childNodes);
+
+    // mark the link of the current page, nav.css draws a dot under it
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".about-link, .top-links a, .work-links a").forEach(link => {
+      if (link.getAttribute("href").replace("./", "") === currentPage) {
+        link.setAttribute("aria-current", "page");
+      }
+    });
+
     document.dispatchEvent(new Event("nav-loaded"));
   }).then(resized => {
     

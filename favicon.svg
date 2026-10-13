@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="535 50 300 300">
+    <style>
+        .icon-path { stroke: #111111; } /* Default / Light mode */
+        @media (prefers-color-scheme: dark) {
+            .icon-path { stroke: #f0f0f0; } /* Dark mode */
+        }
+    </style>
+    <path class="icon-path" d="M30 0 C 0 700, 150 25, 236 19 S 100 100, 650 80 S 346 136, 346 150" fill="none" stroke-width="3" stroke-linecap="round"/>
+    <path class="icon-path" d="M600 15 C 500 245, 530 300, 628 300 S 500 240, 567 145 S 500 500, 600 300" fill="none" stroke-width="9" stroke-linecap="round"/>
+</svg>

@@ -1,25 +1,217 @@
-main {
-  width: 100%;
-  padding-right: 10%;
+/* Map page */
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(15rem, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+/* isolation keeps Leaflet's z-indexed panes inside the frame */
+.map-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.map {
+  /* the low minimum keeps the whole map on screen on a phone held sideways */
+  height: clamp(14rem, 65vh, 38rem);
+  border: 1px solid var(--color-line-light);
+  background-color: var(--color-surface);
+  font-family: var(--font-body);
+}
+
+/* Crosshair marking the map center while the map has keyboard focus */
+.map::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity var(--transition);
+}
+
+.map:focus-visible::after {
+  opacity: 1;
+}
+
+/* Legend under the map */
+.map-key {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space);
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
 }
 
-main section {
-  width: 50%;
-  background-color: white;
-  padding: 25px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+.map-key__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
-main #weather {
-  font-size: 20px;
-  padding: 20px;
+.map-key .map-pin {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
-#map {
-  height: 400px;
+/* Markers (Leaflet divIcon) */
+.map-pin {
+  border: 2px solid var(--color-bg);
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-brand);
+}
+
+.map-pin--school {
+  border-radius: var(--radius);
+  background-color: var(--color-brand);
+}
+
+.map-pin--home {
+  background-color: var(--color-brand-alt);
+}
+
+.map-pin--point {
+  box-shadow: 0 0 0 2px var(--color-brand);
+}
+
+/* Extra outer ring keeps it distinct from the home pin whatever the accent is */
+.map-pin--selected {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-brand), 0 0 0 5px var(--color-accent);
+}
+
+.map-pin--pending {
+  border: 2px dashed var(--color-accent);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Line between the selected point and the target */
+.map-route {
+  stroke: var(--color-accent);
+  stroke-width: 3;
+  stroke-dasharray: 8 6;
+  stroke-opacity: 1;
+}
+
+/* Marker labels (Leaflet tooltips) */
+.leaflet-tooltip.map-label {
+  padding: 2px var(--space-sm);
+  border: 1px solid var(--color-brand);
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  box-shadow: none;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+}
+
+.leaflet-tooltip-top.map-label::before {
+  border-top-color: var(--color-brand);
+}
+
+/* Side panel */
+.map-panel {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.map-panel__block {
+  display: grid;
+  gap: var(--space);
+}
+
+.page .map-panel h3 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.page .map-panel .notice {
+  margin: 0;
+}
+
+.point-list {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.point-list:empty {
+  display: none;
+}
+
+.point-list__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.point-list__select {
+  display: grid;
+  justify-items: start;
+  gap: 0;
   width: 100%;
+  font-size: var(--font-size-sm);
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
 }
 
+.point-list__name {
+  overflow-wrap: anywhere;
+}
+
+.point-list__coordinates {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.point-form {
+  display: grid;
+  gap: var(--space);
+  padding: var(--space);
+  border: 1px dashed var(--color-accent);
+}
+
+.page .point-form__coordinates {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.page .sources {
+  max-width: 70ch;
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 960px) {
+  .map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .map {
+    height: clamp(16rem, 55vh, 28rem);
+  }
+}

@@ -1,43 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kde ma nájdete – mapa | Matej Schreiber</title>
+    <meta name="description" content="Interaktívna mapa: kde študujem (FEI STU v Bratislave), odkiaľ pochádzam (Banská Bystrica) a aká je vzdialenosť k vašim vlastným bodom.">
 
-    <title>Weather API a Leaflet</title>
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:title" content="Kde ma nájdete | Matej Schreiber">
+    <meta property="og:description" content="Mapa so školou a domovom v Banskej Bystrici – pridajte si vlastný bod a zistite vzdialenosť.">
+    <meta property="og:image" content="images/avatar.png">
 
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="css/map.css">
 
-    <link rel="stylesheet" href="./css/map.css">
-    <link rel="stylesheet" href="./css/nav.css">
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
+    <script src="javascript/navigation.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="javascript/script.js" defer></script>
   </head>
+
   <body id="body">
-        <section>
-            <h2>1. AKTUALNE POCASIE</h2>
+    <div class="page">
+      <article class="container">
+        <header class="page-header">
+          <p class="eyebrow">Odkiaľ pochádzam</p>
+          <h1>Kde ma nájdete</h1>
+          <p class="lead">
+            Študujem na FEI STU v Mlynskej doline v Bratislave a domov mám v Banskej Bystrici –
+            vzdušnou čiarou je to <span id="commute-distance">asi 166 km</span>.
+            Pridajte si do mapy vlastný bod a uvidíte, ako ďaleko ste odo mňa.
+          </p>
+        </header>
 
-            <div id="weather">
-                Načítavam počasie...
+        <section class="section" aria-labelledby="map-title">
+          <h2 id="map-title">Mapa</h2>
+
+          <div class="map-layout">
+            <div class="map-frame">
+              <div id="map" class="map" role="region" aria-label="Mapa so školou, domovom a vašimi bodmi. Kliknutím do mapy pridáte bod."></div>
+              <ul class="map-key" aria-label="Legenda mapy">
+                <li class="map-key__item"><span class="map-pin map-pin--school"></span>Škola – FEI STU</li>
+                <li class="map-key__item"><span class="map-pin map-pin--home"></span>Domov – Banská Bystrica (približne)</li>
+                <li class="map-key__item"><span class="map-pin map-pin--point"></span>Váš bod</li>
+                <li class="map-key__item"><span class="map-pin map-pin--point map-pin--selected"></span>Vybraný bod</li>
+              </ul>
             </div>
+
+            <div class="map-panel">
+              <section class="map-panel__block" aria-labelledby="points-title">
+                <h3 id="points-title">Vaše body</h3>
+
+                <p id="points-empty" class="notice">
+                  Zatiaľ ste nepridali žiadny bod. Kliknite do mapy na miesto, ktoré vás zaujíma –
+                  napríklad kde bývate. Bod pomenujte a uložte, potom vyberte cieľ: moju školu alebo
+                  môj domov. Zobrazím vzdialenosť aj spojnicu na mape.
+                </p>
+
+                <ul id="point-list" class="point-list"></ul>
+
+                <button id="add-center" class="button" type="button">Pridať bod v strede mapy</button>
+
+                <form id="point-form" class="point-form" hidden>
+                  <p id="point-coordinates" class="point-form__coordinates"></p>
+                  <label class="field">
+                    <span class="field__label">Názov bodu</span>
+                    <input id="point-name" class="input" name="name" type="text" maxlength="40" required autocomplete="off">
+                  </label>
+                  <div class="button-group">
+                    <button class="button" type="submit">Uložiť bod</button>
+                    <button id="point-cancel" class="button" type="button">Zrušiť</button>
+                  </div>
+                </form>
+
+                <p id="storage-warning" class="notice" hidden>
+                  Body sa nepodarilo uložiť v prehliadači, po obnovení stránky zmiznú.
+                </p>
+              </section>
+
+              <section class="map-panel__block" aria-labelledby="target-title">
+                <h3 id="target-title">Vzdialenosť k</h3>
+                <div class="button-group" role="group" aria-labelledby="target-title">
+                  <button class="button" type="button" data-target="school" aria-pressed="true">Škole</button>
+                  <button class="button" type="button" data-target="home" aria-pressed="false">Domovu</button>
+                </div>
+                <p id="route-result" class="notice route-result" role="status">
+                  Vzdialenosť sa počíta v JavaScripte, ktorý sa zatiaľ nenačítal.
+                </p>
+              </section>
+            </div>
+          </div>
         </section>
 
-        <section>
-            <h2>2. Mapa</h2>
-
-            <div id="map"></div>
+        <section class="section" aria-labelledby="sources-title">
+          <h2 id="sources-title">Zdroje</h2>
+          <p class="muted sources">
+            Mapové podklady: © <a href="https://www.openstreetmap.org/copyright">prispievatelia OpenStreetMap</a> (licencia ODbL).
+            Knižnica: <a href="https://leafletjs.com/">Leaflet 1.9.4</a> (licencia BSD-2-Clause).
+            Vzdialenosť počítam vlastným kódom podľa haversinovho vzorca.
+          </p>
         </section>
+      </article>
+    </div>
   </body>
-
-  <script src="./javascript/navigation.js" defer></script>
-  <!-- Leaflet JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Vlastný JavaScript -->
-  <script src="./javascript/script.js">
-
-  </script>
 </html>

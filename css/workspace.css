@@ -24,7 +24,7 @@
 }
 
 .interactive img{
-  opacity: 80%;
+  opacity: 100%;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -37,7 +37,7 @@
 }
 
 #bgimage{
-  opacity: 15% !important;
+  opacity: 20% !important;
   filter: grayscale(100%);
   width: 30%;
   height: 75%;
@@ -61,28 +61,37 @@ map {
   flex-direction: row;
   position: relative;
   transform: translate(0, 0);
-  transition: opacity 1s ease-in;
+  transition: opacity 0s;
+}
+
+.description p {
+  width: 400px !important;
 }
 
 .desc1{
   transform: translate(20vw, -65vh) !important;
+  transition: opacity 1s ease-in !important;
 }
 
 .desc2{
   transform: translate(20vw, -90vh) !important;
+  transition: opacity 1s ease-in !important;
 }
 .desc3{
   transform: translate(30vw, -60vh) !important;
+  transition: opacity 1s ease-in !important;
 }
 .desc4{
   transform: translate(15vw, -70vh) !important;
+  transition: opacity 1s ease-in !important;
 }
 .desc5{
   transform: translate(20vw, -90vh) !important;
+  transition: opacity 1s ease-in !important;
 }
 
-.selected {
-  transform: translate(20%, -25%) !important;
+.selected{
+  transform: translate(20%, -20%) !important;
   width: 60% !important;
   height: 150% !important;
 }
@@ -94,20 +103,21 @@ map {
   }
 
   .interactive{
-    transform: translate(-18%, -35%);
+    transform: translate(-5%, -35%);
   }
 
   #bgimage{
-    transform: translate(-18%, -35%);
+    transform: translate(-5%, -35%);
   }
     
   .selected {
     width: 30% !important;
     height: 75% !important;
-    transform: translate(-18%, -35%) !important;
+    transform: translate(-5%, -35%) !important;
   }
 
   .desc1, .desc2, .desc3, .desc4, .desc5{
-    transform: translate(10%,-570%) !important;
+    transform: translate(10%,-520%) !important;
+    transition: opacity 1s ease-in !important;
   }
 }

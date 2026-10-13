@@ -17,6 +17,7 @@
 h1, h2, h3, h4, h5{
   font-family: "LexendZetta";
   text-transform: uppercase;
+  font-weight: 400;
 }
 
 p {
@@ -35,45 +36,78 @@ a { color: inherit; text-decoration: none; }
 a:hover { opacity: .58; }
 
 .site-shell { 
-  display: flex; 
+  display: flex;
+  width: 100%;
+  height: 100%; 
 }
 
 .sidebar {
+  z-index: 6;
   position: fixed;
   inset: 0 auto 0 0;
   width: 192px;
-  padding: 33px 32px; 
+  /* top keeps room for the two 36px brand lines that now live in the topbar */
+  padding: calc(33px + 2 * 1.2 * 30px) 32px 33px;
+  background: linear-gradient(to right, #FFFFFF 20%, transparent 80%);
 }
-.brand { display: block; font-size: 30px; line-height: 1.2; letter-spacing: -.03em; }
+/* in the topbar markup, but pinned to the corner above the sidebar where it used to be */
+.brand { position: fixed; top: 33px; left: 32px; display: block; font-size: 30px; line-height: 1.2; letter-spacing: -.03em; }
 .work-nav { margin-top: 20px; display:flex; flex-direction:    column;
   /*transition: height 0.15s ease-out;*/}
 .section-title { display: flex; font-size: 1.125rem; height: 25%; align-items: center;}
 .work-links {align-items: end; height: 50%;display: grid; gap: 10%; margin-top: 28px; padding-left: 6px; font-size: 11px; border-left:#888888 0.1px solid; }
-.page-content {height: 100vw; width: 100vw; margin-left: 192px; overflow: hidden;}
-.topbar {background: linear-gradient(to bottom, #FFFFFF 60%, transparent 100%);
-        width: 100%;position: fixed; display: flex;min-height: 104px; padding: 35px 16px; padding-left: 0;
+.page-content {height: 100vh; width: 100vw; overflow-x: visible;}
+.topbar {z-index: 7; background: linear-gradient(to bottom, #FFFFFF 60%, transparent 100%);
+        width: 100vw; position: fixed; display: flex;min-height: 104px; padding: 35px 16px; padding-left: 0;
       }
-#stretchable-links { /*transition: width 0.15s ease-out;*/ width: 50%; display: flex; justify-content: end; align-items: top; gap: 10%; }
+#stretchable-links {margin-left: 192px; /*transition: width 0.15s ease-out;*/ width: 50%; display: flex; justify-content: end; align-items: start; gap: 10%; }
 .about-link { font-size: 1.125rem; min-width: 3.5rem; text-align: top;}
 .top-links {min-width: 97px; margin-top: 3px; display: flex; gap: 20%; font-size: 11px; justify-self: end; justify-content: end; width: 50%; padding-top: 3px; border-top: 0.1px solid #888888;}
 .content { display: grid; gap: 0; padding: 0 16px 80px; }
 .content section { min-height: 180px; padding: 48px 0; border-bottom: 1px solid #e5e5e5; scroll-margin-top: 24px; }
 .content h2 { margin: 0; font-size: 18px; font-weight: 200; }
+/* current page: the gray line turns purple just along the name (aria-current is set in navigation.js).
+   The marker is a 0.1px border like the gray lines, so both snap to the same hairline */
+[aria-current="page"] > span { position: relative; }
+[aria-current="page"] > span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  border-top: 0.1px solid var(--color-accent, #DD34FF);
+}
+/* top links: on the gray line above them (3px = padding-top of .top-links) */
+.top-links [aria-current="page"] > span::before { bottom: calc(100% + 3px); }
+/* sidebar: on the gray line left of the name (6px = padding-left of .work-links) */
+.work-links [aria-current="page"] > span::before {
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: calc(100% + 6px);
+  border-top: 0;
+  border-left: 0.1px solid var(--color-accent, #881798);
+}
 .menu-toggle, .mobile-menu { display: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-main { margin-top: 104px; height: 80%; overflow: hidden;}
+main { padding-top: 104px; height: 100dvh; overflow:visible; z-index: 0; align-items: start; margin-left: 192px;}
+
+article{
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
 
 @media (max-width: 768px){
   .brand{
+    top: 15px;
+    left: 15px;
     font-size: 22px;
   }
   .sidebar{
     padding: 15px;
     padding-right: 5px;
-    width:140px;
-  }
-  .page-content{
-    margin-left: 140px;
+    padding-top: calc(15px + 2 * 1.2 * 22px);
+    width:90px;
   }
   .topbar{
     padding: 15px 0;
@@ -81,6 +115,46 @@ main { margin-top: 104px; height: 80%; overflow: hidden;}
   #stretchable-links {
     gap: 10%;
     width: 50% !important;
+    margin-left: 120px;
+  }
+  main{
+    margin-left: 56px;
+  }
+
+  .work-nav{
+    margin-top: 70%;
+    height: 30%;
+  }
+
+  .section-title{
+    transform: translateX(calc(-50% + 0.5lh)) rotate(-90deg);
+  }
+
+  .work-links{
+    min-height: 100px;
+    margin-top: 40px;
+    gap:40%;
+  }
+
+  .work-links a{
+    /* rotating around the center leaves the word in the middle of the column,
+       so slide it left by half the column minus half a line to sit against the border */
+    transform: translateY(-30px) translateX(calc(-35px + 0.5lh)) rotate(-90deg);
+    height: 20px;
+  }
+  .work-links a:first-child{
+    margin-top: 40px;
+  }
+
+  /* names are rotated here and their top edge sits on the gray line,
+     so the marker goes along the top of the word in its own frame */
+  .work-links [aria-current="page"] > span::before {
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    border-left: 0;
+    border-top: 0.1px solid var(--color-accent, #881798);
   }
 }
 
